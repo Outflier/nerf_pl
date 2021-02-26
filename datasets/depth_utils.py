@@ -2,6 +2,7 @@ import numpy as np
 import re
 import sys
 
+
 def read_pfm(filename):
     file = open(filename, 'rb')
     color = None
@@ -9,7 +10,7 @@ def read_pfm(filename):
     height = None
     scale = None
     endian = None
-    
+
     header = file.readline().decode('utf-8').rstrip()
     if header == 'PF':
         color = True
@@ -51,13 +52,16 @@ def save_pfm(filename, image, scale=1):
 
     if len(image.shape) == 3 and image.shape[2] == 3:  # color image
         color = True
-    elif len(image.shape) == 2 or len(image.shape) == 3 and image.shape[2] == 1:  # greyscale
+    elif len(image.shape) == 2 or len(
+            image.shape) == 3 and image.shape[2] == 1:  # greyscale
         color = False
     else:
-        raise Exception('Image must have H x W x 3, H x W x 1 or H x W dimensions.')
+        raise Exception(
+            'Image must have H x W x 3, H x W x 1 or H x W dimensions.')
 
     file.write('PF\n'.encode('utf-8') if color else 'Pf\n'.encode('utf-8'))
-    file.write('{} {}\n'.format(image.shape[1], image.shape[0]).encode('utf-8'))
+    file.write('{} {}\n'.format(image.shape[1],
+                                image.shape[0]).encode('utf-8'))
 
     endian = image.dtype.byteorder
 
