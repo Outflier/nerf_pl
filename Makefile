@@ -32,8 +32,6 @@ notebook: ## Launch a notebook
     --name nerfpl_notebook \
 		--volume $(WORKDIR):/workdir \
     --volume /mnt/hdd/data:/workdir/data \
-    --volume /mnt/hdd/models:/workdir/models \
-		--volume /mnt/hdd/models/cache:/root/.cache \
 		--detach \
 		--shm-size "32G" \
 		--publish 8887:8888 \
