@@ -1,4 +1,5 @@
 .vscode/
+torchsearchsorted
 logs/
 ckpts/
 results/
